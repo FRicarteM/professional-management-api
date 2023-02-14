@@ -1,0 +1,12 @@
+server:
+  port: 9090
+cors:
+  originPattenrs: ${http-1},${http-2} 
+resource:
+  path: ${path}
+springdoc:
+  pathsToMatch: /api/**/v1/**
+  swagger-ui:
+    use-root-path: true
+  default-consumes-media-type: application/json
+  auto-tag-classes: true

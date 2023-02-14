@@ -1,0 +1,23 @@
+package com.fabtec.professionalmanagement.api.converters;
+
+import java.time.LocalDate;
+
+import com.fabtec.professionalmanagement.api.data.vo.ProfessionalVo;
+import com.fabtec.professionalmanagement.api.model.Professional;
+
+public class VoConverter {
+
+	public static ProfessionalVo convertProfessionalToVo(Professional professional){
+		
+		ProfessionalVo professionalVo = ProfessionalVo.builder()
+				.key(professional.getId())
+				.firstName(professional.getFirstName())
+				.lastName(professional.getLastName())
+				.registrationCode(professional.getRegistrationCode())
+				.registrationDate(LocalDate.parse(professional.getRegistrationDate()))
+				.build();
+				
+		return professionalVo;
+	}
+
+}
