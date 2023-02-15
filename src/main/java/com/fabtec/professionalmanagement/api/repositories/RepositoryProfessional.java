@@ -53,7 +53,7 @@ public class RepositoryProfessional {
 		for (Professional prof : professionals) {
 			if (prof.getRegistrationCode().equals(registrationCode)) {
 				professional = NewProfessional.newProfessional(prof);
-			} else if (prof.getRegistrationCode().equals(null)) {
+			} else if (prof.getRegistrationCode() == null) {
 				throw new NotFoundException("Not found the register in database!");
 			}
 		}
