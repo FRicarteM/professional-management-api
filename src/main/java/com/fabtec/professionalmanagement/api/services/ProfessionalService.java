@@ -46,7 +46,8 @@ public class ProfessionalService {
 	public ProfessionalVo findByRegistrationCode(String registrationCode) throws NotFoundException, FileNotFoundException {
 		
 		log.info("find a professional by his registration code");
-		Professional professional = repository.findByRegistrationCode(registrationCode);
+		Professional professional = repository.findByRegistrationCode(registrationCode)
+				.orElseThrow(() -> new NotFoundException("Not found the register in database for this Code"));
 		ProfessionalVo professionalVo = VoConverter.convertProfessionalToVo(professional);
 		
 		professionalVo.add(linkTo(methodOn(ProfessionalController.class).findByRegistrationCode(registrationCode))
