@@ -6,7 +6,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,14 +59,12 @@ public class ProfessionalService {
 		return professionalVo;
 	}
 
-	public List<ProfessionalVo> findAll() throws NotFoundException, FileNotFoundException {
+	public List<ProfessionalVo> findAll() throws FileNotFoundException {
 
 		log.info("find all professionals");
 		List<ProfessionalVo> model = new ArrayList<>();
-		List<ProfessionalVo> professionalsVo = repository.findAll()
-				.stream()
-				.map(VoConverter::convertProfessionalToVo)
-				.collect(Collectors.toList());
+		List<ProfessionalVo> professionalsVo = VoConverter
+				.convertProfessionalToVoList(repository.findAll());
 
 		for (ProfessionalVo vo : professionalsVo) {
 			Long id = vo.getKey();

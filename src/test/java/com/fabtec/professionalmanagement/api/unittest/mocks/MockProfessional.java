@@ -1,4 +1,4 @@
-package com.fabtec.professionalmanagement.unittest.mocks;
+package com.fabtec.professionalmanagement.api.unittest.mocks;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +15,12 @@ public class MockProfessional {
 		return mockEntity(0);
 	}
 
+	public Professional mockVo() {
+		return mockEntity(0);
+	}
+
 	public Professional mockEntity(Integer number) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		Professional professional = new Professional();
 			professional.setId(number.longValue());
 			professional.setFirstName("zé" + number);
@@ -29,11 +33,11 @@ public class MockProfessional {
 	
 	public ProfessionalVo mockVo(Integer number) {
 		ProfessionalVo professional = new ProfessionalVo();
-		professional.setKey(number.longValue());
-		professional.setFirstName("zé" + number);
-		professional.setLastName("pereira da" + number);
-		professional.setRegistrationCode("H0976rF" + number);
-		professional.setRegistrationDate(LocalDate.now());
+			professional.setKey(number.longValue());
+			professional.setFirstName("zé" + number);
+			professional.setLastName("pereira da" + number);
+			professional.setRegistrationCode("H0976rF" + number);
+			professional.setRegistrationDate(LocalDate.now());
 		
 		return professional;
 	}

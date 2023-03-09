@@ -18,7 +18,7 @@ public class RepositoryProfessional {
 	@Value("${resource.path}")
 	private String pathWay;
 
-	public List<Professional> findAll() throws NotFoundException, FileNotFoundException {
+	public List<Professional> findAll() throws FileNotFoundException {
 		return JsonConverter.loadJson(new FileReader(pathWay));
 	}
 

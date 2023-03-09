@@ -48,7 +48,7 @@ public class ProfessionalController {
 				@ApiResponse(description = "Internal Error", responseCode = "500", content = {@Content(  
 						array = @ArraySchema(schema = @Schema(implementation = ExceptionResponse.class)))})})
 	 
-	public List<ProfessionalVo> findAll() throws NotFoundException, FileNotFoundException {
+	public List<ProfessionalVo> findAll() throws FileNotFoundException {
 		return service.findAll();
 	}
 	
