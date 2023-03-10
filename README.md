@@ -13,7 +13,8 @@ http://localhost:9090/swagger-ui/index.html
 This API contains three Get methods:
    Finds a Professional:
    http://localhost:9090/api/professionals/v1/search/:id
-      Ex.:
+      
+   Ex.:
    
         {
               "id": 1,
@@ -42,7 +43,8 @@ This API contains three Get methods:
     
    Finds a Professional by his registration code:
    http://localhost:9090/api/professionals/v1/search-registrationCode/:registrationCode
-       Ex.:
+   
+   Ex.:
    
          {
               "id": 10,
@@ -71,7 +73,8 @@ This API contains three Get methods:
           
    Finds all Professionals:
    http://localhost:9090/api/professionals/v1/search
-       Ex.:
+   
+   Ex.:
     
         [
          {
