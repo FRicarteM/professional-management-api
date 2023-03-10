@@ -69,8 +69,8 @@ This API contains three Get methods:
               }
           }
           
-    Finds all Professionals:
-    http://localhost:9090/api/professionals/v1/search
+   Finds all Professionals:
+   http://localhost:9090/api/professionals/v1/search
        Ex.:
     
         [
