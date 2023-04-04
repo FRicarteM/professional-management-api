@@ -36,8 +36,9 @@ class VoConverterTest {
 	@Test
 	@DisplayName("Tests the method which convert a list of Professional for a list of ProfessionalVo")
 	void testConvertProfessionalToVoList() {
-		List<ProfessionalVo> outputList = 
-				VoConverter.convertProfessionalToVoList(input.mockEntityList());
+
+		List<ProfessionalVo> outputList = VoConverter.convertProfessionalToVoListWithHateoas(input.mockEntityList());
+				
 		ProfessionalVo outputZero = outputList.get(0);
 		assertEquals(Long.valueOf(0L), outputZero.getKey());
 		assertEquals("zé0", outputZero.getFirstName());

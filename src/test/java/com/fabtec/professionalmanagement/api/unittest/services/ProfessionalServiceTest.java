@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +22,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.hateoas.CollectionModel;
 
 import com.fabtec.professionalmanagement.api.data.vo.ProfessionalVo;
 import com.fabtec.professionalmanagement.api.exceptions.NotFoundException;
@@ -119,7 +121,8 @@ class ProfessionalServiceTest {
 		
 		when(repository.findAll()).thenReturn(professionals);
 		
-		List<ProfessionalVo> result = service.findAll();
+		CollectionModel<ProfessionalVo> collectionModel = service.findAll();
+		List<ProfessionalVo> result = collectionModel.getContent().stream().collect(Collectors.toList());
 		assertNotNull(result);
 		assertEquals(10, result.size());
 		

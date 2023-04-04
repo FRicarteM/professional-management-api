@@ -4,10 +4,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Service;
 
 import com.fabtec.professionalmanagement.api.controllers.ProfessionalController;
@@ -59,24 +58,15 @@ public class ProfessionalService {
 		return professionalVo;
 	}
 
-	public List<ProfessionalVo> findAll() throws FileNotFoundException {
-
+	public CollectionModel<ProfessionalVo> findAll() throws FileNotFoundException {
 		log.info("find all professionals");
-		List<ProfessionalVo> model = new ArrayList<>();
-		List<ProfessionalVo> professionalsVo = VoConverter
-				.convertProfessionalToVoList(repository.findAll());
+		CollectionModel<ProfessionalVo> professionalsVo = CollectionModel.of(VoConverter
+				.convertProfessionalToVoListWithHateoas(repository.findAll()));
 
-		for (ProfessionalVo vo : professionalsVo) {
-			Long id = vo.getKey();
-			String registrationCode = vo.getRegistrationCode();
-			vo.add(linkTo(methodOn(ProfessionalController.class).findById(id))
-					.withRel("Find a Professionals by Id").withType("GET").withName("Find By ID"));
-			vo.add(linkTo(methodOn(ProfessionalController.class).findByRegistrationCode(registrationCode))
-					.withRel("Find a Professionals by Registration Code").withType("GET").withName("Find By Registration Code"));
-			model.add(vo);
-		}
-
-		return model;
+		professionalsVo.add(linkTo(methodOn(ProfessionalController.class).findAll()).withSelfRel()
+				.withType("GET").withName("Find All"));
+		
+		return professionalsVo;
 	}
 
 }

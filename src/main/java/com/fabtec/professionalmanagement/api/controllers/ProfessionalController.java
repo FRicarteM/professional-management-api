@@ -1,9 +1,9 @@
 package com.fabtec.professionalmanagement.api.controllers;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +48,7 @@ public class ProfessionalController {
 				@ApiResponse(description = "Internal Error", responseCode = "500", content = {@Content(  
 						array = @ArraySchema(schema = @Schema(implementation = ExceptionResponse.class)))})})
 	 
-	public List<ProfessionalVo> findAll() throws FileNotFoundException {
+	public CollectionModel<ProfessionalVo> findAll() throws FileNotFoundException {
 		return service.findAll();
 	}
 	
