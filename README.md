@@ -1,7 +1,7 @@
 <h2> Professional Management API </h2>
 
 <p>
-This API Rest is the first part of a larger project. This project was designed to put into practice the acquired knowledge, being a project focused on learning. It consists of three parts, the first is an API that consults professionals in a database, but in this case we don’t use a database, but a JSON file, with information from some fictitious employees. The second part is an API that consumes this API, and the third part is a microservice that listens to the second API, the exact functioning of the remaining two parts will be better explained in their repositories.
+This API RESTful is the first part of a larger project. This project was designed to put into practice the acquired knowledge, being a project focused on learning. It consists of three parts, the first is an API that consults professionals in a database, but in this case we don’t use a database, but a JSON file, with information from some fictitious employees. The second part is an API that consumes this API, and the third part is a microservice that listens to the second API, the exact functioning of the remaining two parts will be better explained in their repositories.
 </p>
 
 <h3> Test </h3>
